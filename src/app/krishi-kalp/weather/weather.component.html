@@ -1,0 +1,15 @@
+<div class="container-fluid locationColor">
+  <div class="row">
+    <div >
+      <i 
+        class="material-icons"
+        (click)="getLocation()">add_location</i>
+         <span style="padding-top: 15px"> {{userLocation}} </span>
+    </div>
+</div>
+</div>
+<div class="container">
+  <div *ngFor="let val of dailyArray">
+  <app-weathercard
+  [val]="val"></app-weathercard>
+</div>

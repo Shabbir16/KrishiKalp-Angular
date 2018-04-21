@@ -1,0 +1,18 @@
+<mat-card class="cardBackGround"
+[@changeState]="state" (click)="changeState()">
+<div class="row">
+    <div class="col-xs-4 ">
+        <img src="../../../../assets/icons/climacons-master/SVG/Cloud-Drizzle.svg">
+    </div>
+    <div class="col-xs-8 ">
+        <span class="title">Day Of the Week</span><br>
+        <span class="title">{{temperature}}<sup>o</sup></span>
+    <div  [@secondState]="secondstate"  *ngIf="state == 'active'">
+        <div   class="row titleSecond">{{summary}}</div>
+        <div class="row titleSecond">Wind:&nbsp;{{windSpeed}}</div>
+        <div class="row titleSecond">humidity:&nbsp;{{humidity}}</div>
+    </div>
+</div>
+</div>
+
+</mat-card>

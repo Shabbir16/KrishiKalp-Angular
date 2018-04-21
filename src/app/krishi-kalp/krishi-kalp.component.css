@@ -1,0 +1,16 @@
+.imageDimen{
+    width: 100%;
+    height: 100%;
+    
+    filter:blur(2px);
+    /* clip-path: polygon(0 0, 0 0, 0 0, 0 0); */
+    /* clip-path: margin-box circle(25% at 25% 25%) */
+}
+
+.demo-tab-content {
+    padding: 16px;
+  }
+
+  .demo-tab-group {
+    border: 1px solid #e8e8e8;
+  }
