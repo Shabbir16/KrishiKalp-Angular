@@ -1,15 +1,19 @@
 <div class="container-fluid locationColor">
-  <div class="row">
-    <div >
-      <i 
-        class="material-icons"
+      <div class="row">
+      <i style="padding-top: 10px;padding-left: 10px"
+        class="material-icons "
+   
         (click)="getLocation()">add_location</i>
-         <span style="padding-top: 15px"> {{userLocation}} </span>
-    </div>
+         <div style="padding-top: 10px;padding-left: 10px"
+         >{{userLocation}}</div>
+        </div>
+
 </div>
-</div>
-<div class="container">
-  <div *ngFor="let val of dailyArray">
+<div class="container"  >
+  <div *ngFor="let val of dailyArray; index as i">
   <app-weathercard
-  [val]="val"></app-weathercard>
+  [val]="val" [index]="i"></app-weathercard>
 </div>
+
+  <app-location-get style="width: 100%;padding: 0%;margin: 0%" *ngIf="showRouterOutlet"></app-location-get>
+  

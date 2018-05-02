@@ -13,25 +13,43 @@ declare var google: any
 export class WeatherComponent implements OnInit {
 
   userLocation = 'No Location Selected';
-  dailyArray :any[];  
+  dailyArray=[];
+  showRouterOutlet=false;
   constructor(private service: CommonService) { }
 
   ngOnInit() {
-    
+    this.service.confirmLocation.subscribe(
+      (val:boolean)=>{
+        if(val){
+          this.showRouterOutlet = false;
+          this.dailyArray = this.service.dailyArray;
+          this.userLocation = this.service.userLocation;
+        }
+      }
+    )
   }
 
   changeState(){
-    this.service.changeState.next(true);
+    
   }
 
+  navigateToLocation(){
+    this.showRouterOutlet=true;
+  }
   getLocation(){
     // console.log('Location Works');
-    if (navigator.geolocation) {
+    if(this.userLocation != 'No Location Selected'){
+      return;
+    }
+    if (navigator.geolocation ) {
       navigator.geolocation.getCurrentPosition((position) => {
         // this.showPosition(position);
         // console.log('Location Works',position);
         let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        this.printAddress(location);
+        this.showRouterOutlet = true;
+        // this.service.changeState.next(location);
+        this.service.loc = location;
+        // this.printAddress(location);
         
       });
     } else {
@@ -48,21 +66,12 @@ export class WeatherComponent implements OnInit {
       if (status == google.maps.GeocoderStatus.OK) {
   
             this.userLocation = results[0].address_components[0].long_name+" "+results[0].address_components[1].long_name
-            this.getWeatherDetils(location.lat(),location.lng());
+         
            
 
     }
     })
   }
 
-  getWeatherDetils(lat,lng){
-    this.service.getWeather(lat,lng).subscribe(
-      (body:any)=>{
-        console.log(body);
-        this.dailyArray = body.daily.data;
-        console.log(this.dailyArray);
-      }
-    );
-  }
 
 }

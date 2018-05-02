@@ -15,15 +15,14 @@ import { CommonService } from '../../../service/common.service';
   animations: [
     trigger('changeState', [
       state('inactive', style({
-        transform: 'scale(1.0)'
+      
       })),
       state('active',   style({
-        backgroundColor:'#E3BB88',
         height: '220px',
-        transform: 'scale(1.1)'
+     
       })),
-      transition('inactive => active', animate('300ms ease-in')),
-      transition('active => inactive', animate('300ms ease-out')),
+      transition('inactive => active', animate('300ms  ease-in')),
+      transition('active => inactive', animate('300ms   ease-out')),
      
 
     ]),
@@ -32,16 +31,16 @@ import { CommonService } from '../../../service/common.service';
         transform: 'translateY(0)'
       })),
       state('hide', style({
-        transform: 'translateY(0)'
+        transform: 'translateX(-100%)'
       })),
-      transition('* => show',  [
+      transition('hide => show',  [
         style({transform: 'translateY(-100%)'}),
-        animate('300ms 1s ease-in')
+        animate('300ms ease-in')
       ]),
       transition('show => hide',  [
         style({transform: 'translateY(+100%)'}),
         animate('300ms  ease-in')
-      ]),
+      ])
     ])
 
   ]
@@ -49,13 +48,18 @@ import { CommonService } from '../../../service/common.service';
 export class WeathercardComponent implements OnInit {
 
   @Input('val') myValue: any;
+  @Input('index') index;
+ 
   url:string = '../../../../assets/icons/climacons-master/SVG/';
   summary: string ;
   windSpeed: string;
   humidity: string;
   icon: string;
-  temperature:string;
+  temperaturehigh:string;
+  temperaturelow:string;
   secondstate:string = 'hide';
+  color1='#f4f4f4';
+  dayofweek;
   constructor(private service: CommonService) { }
 
   ngOnInit() {
@@ -66,17 +70,26 @@ export class WeathercardComponent implements OnInit {
     this.humidity = this.myValue.humidity;
     this.icon  = this.myValue.icon;
     this.url+=this.icon+'.svg';
-    this.temperature =  this.myValue.temperatureHigh
+    this.temperaturehigh =  this.myValue.temperatureHigh
+    this.temperaturelow =  this.myValue.temperatureLow
+    this.color1 = this.service.colorPallet[this.index];
+    this.dayofweek = this.service.dateArray[this.index];
+
   }
   state  = 'inactive';
   changeState(){
-    if(this.state == 'active'){
-      this.state = 'inactive'
-      this.secondstate = 'hide';
-    }else  {
-      this.state = 'active';
-      this.secondstate = 'show';
-    }
+
+      if(this.state == 'active'){
+        this.state = 'inactive'
+        this.secondstate = 'hide';
+  
+      }else  {
+        this.state = 'active';
+        this.secondstate = 'show';
+  
+      }
+  
+    
     
   }
 }

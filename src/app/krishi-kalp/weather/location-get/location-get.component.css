@@ -1,0 +1,14 @@
+.bgColor{
+    background-color: #A5B7A2;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+}
+
+.myCard{
+    width: 80%;
+    height:200px;
+    margin: 10%;
+    background-color: #B0695A;
+}

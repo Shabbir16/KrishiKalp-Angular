@@ -1,18 +1,20 @@
-<mat-card class="cardBackGround"
+<mat-card  [ngStyle]="{'background-color':color1}"
 [@changeState]="state" (click)="changeState()">
-<div class="row">
-    <div class="col-xs-4 ">
-        <img src="../../../../assets/icons/climacons-master/SVG/Cloud-Drizzle.svg">
+<div >
+    
+    <div  style="padding-left: 10%">
+        <span class=" row title text" >{{dayofweek}}</span>
+        <span class="row title">High:&nbsp;{{temperaturehigh}}&nbsp;celcius</span>
+        <span class="row title">Low:&nbsp;{{temperaturelow}}&nbsp;celcius</span>
+    <div  *ngIf="state == 'active'">
+        <div  class=" row titleSecond">{{summary}}</div>
+        <div class=" row titleSecond">Wind:&nbsp;{{windSpeed}}</div>
+        <div class=" row titleSecond">humidity:&nbsp;{{humidity}}</div>
     </div>
-    <div class="col-xs-8 ">
-        <span class="title">Day Of the Week</span><br>
-        <span class="title">{{temperature}}<sup>o</sup></span>
-    <div  [@secondState]="secondstate"  *ngIf="state == 'active'">
-        <div   class="row titleSecond">{{summary}}</div>
-        <div class="row titleSecond">Wind:&nbsp;{{windSpeed}}</div>
-        <div class="row titleSecond">humidity:&nbsp;{{humidity}}</div>
-    </div>
-</div>
+  </div>
+  <!-- <div [@secondState]="secondstate" class="row" *ngIf="state == 'active'">
+    <img src="../../../../assets/icons/climacons-master/SVG/Cloud-Drizzle.svg">
+  </div> -->
 </div>
 
 </mat-card>

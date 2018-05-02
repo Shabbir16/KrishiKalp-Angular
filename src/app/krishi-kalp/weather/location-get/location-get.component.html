@@ -1,0 +1,18 @@
+<div class="bgColor">
+  <div class="container">
+    <b style="color: azure">Set Your Location</b>
+  </div>
+
+  <mat-card class="myCard">
+      <mat-card-header>
+        <mat-card-title style="color: azure">Select the Location</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <button (click)="getLocation()" 
+          mat-raised-button style="background-color:#E3BB88">Click To see Location</button><br><br>
+          <div style="color:#f4f4f4" >{{userLocation}}</div><br>
+          <button (click)="getLocation()" *ngIf="userLocation != 'No Location is Selected'"
+          mat-raised-button style="background-color:#E3BB88">Click To Confirm Location</button>
+      </mat-card-content>
+  </mat-card>
+</div>
