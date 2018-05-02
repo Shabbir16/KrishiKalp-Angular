@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // PrimeNG dependency
 import {ListboxModule} from 'primeng/listbox';
+import {FileUploadModule} from 'primeng/fileupload';
 
 //Angular Component Import
 import {MatInputModule} from '@angular/material/input';
@@ -26,6 +27,10 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LocationGetComponent } from './krishi-kalp/weather/location-get/location-get.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserprofileComponent } from './krishi-kalp/userprofile/userprofile.component';
+import { SocketComponent } from './socket/socket.component';
+import {ParsejsonService} from './service/parsejson.service';
+import { SocketService } from './service/socket.service';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -35,7 +40,8 @@ import { UserprofileComponent } from './krishi-kalp/userprofile/userprofile.comp
     WeatherComponent,
     WeathercardComponent,
     LocationGetComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    SocketComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +54,9 @@ import { UserprofileComponent } from './krishi-kalp/userprofile/userprofile.comp
     MatDatepickerModule,MatButtonModule, 
     MatCheckboxModule, MatNativeDateModule, 
     MatChipsModule,
-    AppRoutingModule
+    AppRoutingModule,FileUploadModule,HttpModule
   ],
-  providers: [CommonService],
+  providers: [CommonService,ParsejsonService,SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

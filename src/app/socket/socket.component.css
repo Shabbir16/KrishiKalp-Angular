@@ -1,0 +1,61 @@
+
+.footer {
+    position:fixed;
+    left:0px;
+    bottom:30px;
+    height:30px;
+    margin: 10px;
+    width:93%;
+ }
+ .footer2 {
+    position:fixed;
+    right: 0px;
+    bottom:50px;
+    height:50px;
+    margin: 10px;
+
+ }
+ .intro{
+  margin-bottom: 2%;
+  background-color:#937E81;
+  border-radius: 2%;
+  width: auto;
+
+ }
+
+ .message{
+    margin-bottom: 2%;
+    background-color:#E3BB88;
+    font-size: 20sp;
+    color: white;
+    border-radius: 2%;
+ }
+ .text-format{
+     color: white;
+     font-size: 30sp;
+     padding-left: 5%;
+ }
+ .text-format2{
+    color: white;
+    font-size: 50sp;
+}
+p{
+    word-wrap: break-word;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
+  }
+  
+.text-war {
+   
+    color:#937E81;
+    padding: 18px;
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+.text-war:hover {
+   
+    color:burlywood;
+
+}

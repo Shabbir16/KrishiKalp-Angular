@@ -1,0 +1,81 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-sm-8 col-xs-8">
+   
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-12">
+              <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                  <input type="text" pInputText placeholder="Username" autofocus [(ngModel)]="userName">         
+              </div>
+          </div>
+      </div>
+          
+
+  
+  
+  <div *ngIf="!userName==''">
+    <div  *ngFor="let val of messageArray">
+        <div class="row">
+          <div class="col-md-3 col-sm-3 col-xs-3 ">
+                      <h5><p class="text-success">
+                         {{val.from}}
+                       </p>
+                      </h5>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-9">
+                      <h4><p class="text-primary">
+                          {{val.text}}
+                        </p>
+                      </h4>
+          </div>
+         
+        </div>
+    </div>
+
+  <div class="footer">
+      <div class="row">
+        <div class="col">
+          <input [(ngModel)]="chatText" class="form-control"  (keyup)="entertosend($event)" >
+        </div>
+        <div class="col"><button class="btn btn-primary"  (click)="onSend()">Submit</button></div>
+      </div>
+  </div>
+  </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4 verticalLine">
+        <div class="footer2">
+            <p-fileUpload name="demo[]" url="http://192.168.72.199:3001/api/Upload" (onUpload)="onUpload($event)" ></p-fileUpload>
+        </div>
+       
+          <div  *ngFor="let val of fileArray">
+              <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-3 ">
+                            <h5><i class="material-icons">attachment</i>
+                            </h5>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                            <a><h6><p class="text-war" (click)="downloadfile(val.text)">
+                                {{val.text}}
+                              </p>
+                            </h6>
+                          </a>
+                </div>
+               
+              </div>
+          </div>
+  
+    </div>
+  </div>
+</div>
+    
+<!-- 
+<div class="container" style="margin-left: 10%;padding-right: 10%">
+    <ul class="list-group" >
+        <li  *ngFor="let val of messageArray"
+        class="list-group-item list-group-item-success"
+        >{{val.value}}</li>
+    </ul>
+</div> -->
